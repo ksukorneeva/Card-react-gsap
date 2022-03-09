@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: hsl(210, 50%, 94%);
+  --card: hsl(0, 0%, 98%);
+  --radius: 12px;
+}
+
+body {
+  background: var(--bg);
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+}
+
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-gap: 1rem;
+  gap: 1rem;
+  perspective: 100vmin;
+  transform: translate3d(0, 0, 100vmin);
+}
+
+.media-card {
+  width: max(200px, 20vmin);
+  aspect-ratio: 187/311;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: var(--radius);
+  transform: rotateY(calc(var(--x, 0) * 0.5deg));
+  cursor: pointer;
+  transform-style: preserve-3d;
+}
+
+.media-card__img {
+  max-width: 100%;
+  object-fit: cover;
+  transform: scale(var(--scale, 1));
+  filter: brightness(var(--brightness, 0.9));
+  transition: transform 0.25s, filter 0.25s;
+}
+
+.media-card__img-container {
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+}
+
+.media-card:hover {
+  --scale: 1.5;
+  --brightness: 1.1;
+}
+
+.media-card__title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  display: block;
+  line-height: 1.5;
+}
+.media-card__subtitle {
+  font-size: 1rem;
+  font-weight: 100;
+  display: block;
+}
